@@ -1,3 +1,6 @@
+import example.OrderStatus
+import example.handleOrder
+
 fun main() {
 //    val manager = ResourceManager()
 //    manager.add(OutpostResourse(1, "Minerals", 120))
@@ -26,3 +29,7 @@ fun main() {
 //    val logger1 = Logger
 //    val logger2 = Logger
 //    println(logger1 == logger2)
+//    handleOrder(OrderStatus.Created)
+//    handleOrder(OrderStatus.Paid)
+//    handleOrder(OrderStatus.Shipped)
+//    handleOrder(OrderStatus.Cancelled("Нет товара на складе"))
