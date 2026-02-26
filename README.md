@@ -22,82 +22,96 @@ git clone <https://github.com/dream839/Kotli_Advanced_Lab_9_10_Fedorov.git>
 
 ---
 
-### 5.Интерфейсы
+### Интерфейсы
 Контракты поведения с возможностью default-реализаций.
 ```kotlin
-// Простой интерфейс
-interface Movable {
-    val model: String
-    var speed: Int
-    
-    fun move()
-    fun stop() {
-        println("Остановка...") // default реализация
+// Простой интерфейс для животных
+interface Animal {
+    val name: String
+    fun makeSound()
+    fun sleep() {
+        println("$name спит...") // реализация по умолчанию
     }
 }
-// Класс, реализующий интерфейс
-class Car(override val model: String) : Movable {
-    override var speed = 60
 
-    override fun move() {
-        println("Едем на машине $model со скоростью $speed км/ч")
+// Класс, реализующий интерфейс Animal
+class Dog(override val name: String) : Animal {
+    override fun makeSound() {
+        println("$name говорит: Гав-гав!")
     }
 }
 
 // Множественное наследование интерфейсов
-interface Worker {
-    fun work()
+interface Carnivore {
+    fun hunt()
 }
 
-interface Student {
-    fun study()
+interface Domesticated {
+    fun feed()
 }
 
-class WorkingStudent(val name: String) : Worker, Student {
-    override fun work() = println("$name работает")
-    override fun study() = println("$name учится")
-}
+class Wolf(val species: String) : Animal, Carnivore, Domesticated {
+    override val name: String
+        get() = "Волк $species" // пример получения имени
 
-// Конфликт имен методов в интерфейсах
-interface VideoPlayable {
-    fun play() {
-        println("Play video")
+    override fun makeSound() {
+        println("$name рычит.")
+    }
+
+    override fun hunt() {
+        println("$name охотится в лесу.")
+    }
+
+    override fun feed() {
+        println("$name ест мясо.")
     }
 }
 
-interface AudioPlayable {
-    fun play() {
-        println("Play audio")
+// Конфликт методов по имени
+interface Flyable {
+    fun fly() {
+        println("Летать в небе.")
     }
 }
 
-class MediaPlayer : VideoPlayable, AudioPlayable {
-    override fun play() {
-        println("Start playing")
-        super<VideoPlayable>.play()
-        super<AudioPlayable>.play()
+interface Swimable {
+    fun fly() {
+        println("Плавает в воде.")
     }
 }
 
-// Функция, принимающая интерфейс
-fun travel(obj: Movable) {
-    obj.move()
-    obj.stop()
+class Duck : Flyable, Swimable {
+    override fun fly() {
+        println("Утка использует метод fly() для полета и плавания.")
+        // Вызов методов из интерфейсов
+        super<Flyable>.fly()
+        super<Swimable>.fly()
+    }
 }
 
-// Пример использования
+// Функция, принимающая интерфейс Animal
+fun animalInfo(animal: Animal) {
+    println("Информация о животном: ${animal.name}")
+    animal.makeSound()
+    animal.sleep()
+}
+
+// Основная функция
 fun main() {
-    val car = Car("Toyota")
-    car.move()
+    val dog = Dog("Булька")
+    dog.makeSound()
+    dog.sleep()
 
-    val student = WorkingStudent("Иван")
-    student.work()
-    student.study()
+    val wolf = Wolf("Серый")
+    wolf.makeSound()
+    wolf.hunt()
+    wolf.feed()
 
-    val player = MediaPlayer()
-    player.play()
+    val duck = Duck()
+    duck.fly()
 
-    // Полиморфизм
-    travel(car)
+    // Использование функции с интерфейсом
+    animalInfo(dog)
+    animalInfo(wolf)
 }
 ```
