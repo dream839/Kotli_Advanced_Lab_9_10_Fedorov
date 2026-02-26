@@ -33,3 +33,17 @@ fun main() {
 //    handleOrder(OrderStatus.Paid)
 //    handleOrder(OrderStatus.Shipped)
 //    handleOrder(OrderStatus.Cancelled("Нет товара на складе"))
+//    fun handleModuleResult(result: ModuleResult){
+//        when (result){
+//            is ModuleResult.Success ->
+//                println("УСПЕХ: ${result.message}")
+//            is ModuleResult.ResourceProduced ->
+//                println("Произведено: ${result.resourceName} +${result.amount}")
+//            is ModuleResult.NotEnoughResources ->
+//                println("Недостаточно ресурса ${result.resourceName}. " +
+//                "Нужно: ${result.required}, есть: ${result.available}")
+//            is ModuleResult.Error ->
+//                println("ОШИБКА: ${result.reason}")
+//        }
+//    }
+//    han

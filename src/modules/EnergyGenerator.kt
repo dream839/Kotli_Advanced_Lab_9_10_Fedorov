@@ -1,5 +1,6 @@
 package modules
 
+import resources.OutpostResourse
 import resources.ResourceManager
 
 class EnergyGenerator: OutpostModule("Генератор энергии") {
@@ -9,3 +10,9 @@ class EnergyGenerator: OutpostModule("Генератор энергии") {
         return if (energy != null){
             energy.amount += 20
             ModuleResult.ResourceProduced("Energy", 20)
+        } else {
+            manager.add(OutpostResourse(99, "Energy", 20))
+            ModuleResult.Success("Энергия создана впервые")
+        }
+    }
+}ResourceProduced("Energy", 20)
