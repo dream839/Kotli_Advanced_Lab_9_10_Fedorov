@@ -1,6 +1,5 @@
 package modules
 
-import resources.OutpostResourse
 import resources.ResourceManager
 
 class EnergyGenerator: OutpostModule("Генератор энергии") {
