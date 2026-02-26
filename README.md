@@ -22,41 +22,82 @@ git clone <https://github.com/dream839/Kotli_Advanced_Lab_9_10_Fedorov.git>
 
 ---
 
-## 1. Инкапсуляция, Геттеры и Сеттеры
-
-**Инкапсуляция** — это механизм языка, позволяющий скрыть внутреннее состояние объекта и предоставить доступ к нему только через специальные методы.
-
-В Kotlin по умолчанию все свойства `public`. Для ограничения доступа используются модификаторы: `private`, `protected`, `internal`.
-
-**Геттеры и сеттеры** позволяют контролировать чтение и запись свойств.
-
-### Пример:
-
+### 5.Интерфейсы
+Контракты поведения с возможностью default-реализаций.
 ```kotlin
-class User(private var _age: Int) {
+// Простой интерфейс
+interface Movable {
+    val model: String
+    var speed: Int
     
-    // Публичное свойство с кастомным геттером и сеттером
-    var age: Int
-        get() {
-            println("Получаем возраст...")
-            return _age
-        }
-        set(value) {
-            if (value >= 0) {
-                println("Устанавливаем новый возраст: $value")
-                _age = value
-            } else {
-                println("Ошибка: возраст не может быть отрицательным!")
-            }
-        }
+    fun move()
+    fun stop() {
+        println("Остановка...") // default реализация
+    }
+}
+// Класс, реализующий интерфейс
+class Car(override val model: String) : Movable {
+    override var speed = 60
 
-    fun introduce() {
-        println("Привет, мне $age лет.")
+    override fun move() {
+        println("Едем на машине $model со скоростью $speed км/ч")
     }
 }
 
-fun main() {
-    val user = User(20)
-    user.age = 25   // Вызовет сеттер
-    println(user.age) // Вызовет геттер
+// Множественное наследование интерфейсов
+interface Worker {
+    fun work()
 }
+
+interface Student {
+    fun study()
+}
+
+class WorkingStudent(val name: String) : Worker, Student {
+    override fun work() = println("$name работает")
+    override fun study() = println("$name учится")
+}
+
+// Конфликт имен методов в интерфейсах
+interface VideoPlayable {
+    fun play() {
+        println("Play video")
+    }
+}
+
+interface AudioPlayable {
+    fun play() {
+        println("Play audio")
+    }
+}
+
+class MediaPlayer : VideoPlayable, AudioPlayable {
+    override fun play() {
+        println("Start playing")
+        super<VideoPlayable>.play()
+        super<AudioPlayable>.play()
+    }
+}
+
+// Функция, принимающая интерфейс
+fun travel(obj: Movable) {
+    obj.move()
+    obj.stop()
+}
+
+// Пример использования
+fun main() {
+    val car = Car("Toyota")
+    car.move()
+
+    val student = WorkingStudent("Иван")
+    student.work()
+    student.study()
+
+    val player = MediaPlayer()
+    player.play()
+
+    // Полиморфизм
+    travel(car)
+}
+```
