@@ -59,3 +59,19 @@ fun main() {
 //    user.email = "Mihail@example.com"
 //    println("\nМеняем Name:")
 //    user.name = "Fedorov M."
+//    println("Создаём героя...")
+//    val hero = GameHero("dream")
+//
+//    println("\nТекущая мана: ${hero.mana}")
+//
+//    println("\nГерой пытается использовать способности: ")
+//    println("Способность: ${hero.ultimate}")
+//
+//    println("\nПовторный вызов способности (должна быть мгновенной): ")
+//    println("Способность: ${hero.ultimate}")
+//
+//    println("\nМеняем имя героя:")
+//    hero.name = "anubis"
+//
+//    println("\nГерой восстанавливает ману:")
+//    hero.mana = 200
