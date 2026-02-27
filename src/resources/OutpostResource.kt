@@ -18,7 +18,7 @@ fun main(){
     val mineral = OutpostResourse(2, "Minerals", 250)
     println("Успех! Вы добавили доп. кол-во минералов: " +
             "${mineral.amount + 50}")
-    val bonusMineral = mineral.copy(3,"Mineral Bonus", amountInit = mineral.amount + 50)
+    val bonusMineral = mineral.copy(3,"Mineral Bonuss", amountInit = mineral.amount + 50)
     println(gas.toString())
     println(mineral.toString())
     println(bonusMineral.toString())

@@ -75,3 +75,25 @@ fun main() {
 //
 //    println("\nГерой восстанавливает ману:")
 //    hero.mana = 200
+//    logger.log("Запуск базы")
+//}
+//object SystemLogger {
+//    init {
+//        println("SystemLogger инициализирован")
+//    }
+//    fun log(message: String){
+//        println("[LOG] $message")
+//    }
+//}
+//val logger by lazy{
+//    SystemLogger
+//}
+    //    val loadedResources = FileStorage.load()
+//    loadedResources.forEach { manager.add(it) }
+//    if (loadedResources.isEmpty()){
+//        manager.add(OutpostResourse(1,"Minerals", 300))
+//        manager.add(OutpostResourse(2,"Gas", 100))
+//
+//    }
+//    FileStorage.save(manager.getAll())
+}
