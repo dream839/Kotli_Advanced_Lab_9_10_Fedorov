@@ -46,4 +46,16 @@ fun main() {
 //                println("ОШИБКА: ${result.reason}")
 //        }
 //    }
-//    han
+//
+//    println("Создаём профиль пользователя...")
+//    val user = UserProfile("Misha", "FedorovAbd@example.com")
+//    println("\nИмя: ${user.name}")
+//    println("Email: ${user.email}")
+//    println("\nОбращаемся к аватару впервые:")
+//    println("Файл аватара: ${user.avatar}")
+//    println("\nОбращаемся к аватару снова (должен быть взят из кэша):")
+//    println("Файл аватара: ${user.avatar}")
+//    println("\nМеняем email:")
+//    user.email = "Mihail@example.com"
+//    println("\nМеняем Name:")
+//    user.name = "Fedorov M."
